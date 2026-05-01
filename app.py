@@ -53,6 +53,23 @@ html, body, [class*="css"] {
     border-radius: 12px !important;
     color: #e2e8f0 !important;
 }
+
+/* Fix for invisible dropdown menu options */
+div[data-baseweb="popover"] > div,
+div[data-baseweb="popover"] ul {
+    background-color: #0d1a2e !important;
+}
+div[data-baseweb="popover"] li {
+    color: #e2e8f0 !important;
+}
+div[data-baseweb="popover"] li:hover {
+    background-color: #3d5fc4 !important;
+    color: white !important;
+}
+span[data-baseweb="tag"] {
+    background-color: #3d5fc4 !important;
+    color: white !important;
+}
  
 /* Text area */
 .stTextArea textarea {
