@@ -7,7 +7,7 @@ async function callClaude(messages, systemPrompt = null, maxTokens = 1000) {
     };
 
     // Sunucun 3000 portunda bekliyor
-    const res = await fetch('http://localhost:3000/api/claude', {
+    const res = await fetch('/api/claude', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body)

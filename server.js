@@ -85,6 +85,7 @@ app.post('/api/claude', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log("SUNUCU 3000 PORTUNDA CALISIYOR");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`SUNUCU ${PORT} PORTUNDA CALISIYOR`);
 });
