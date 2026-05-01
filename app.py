@@ -38,6 +38,12 @@ html, body, [class*="css"] {
     width: 100% !important;
 }
 .stButton > button:hover { opacity: 0.88 !important; }
+.stButton > button:disabled {
+    background: #1e293b !important;
+    color: #94a3b8 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
  
 /* Selectbox & Multiselect */
 .stSelectbox > div > div,
@@ -224,10 +230,13 @@ if st.session_state.plan is None:
             label_visibility="collapsed"
         )
         st.markdown("")
-        if st.button("Devam Et →", disabled=(grade == "")):
-            st.session_state.grade = grade
-            st.session_state.step = 2
-            st.rerun()
+        if st.button("Devam Et →"):
+            if grade == "":
+                st.error("Lütfen devam etmek için bir sınıf seçin.")
+            else:
+                st.session_state.grade = grade
+                st.session_state.step = 2
+                st.rerun()
  
     # ── STEP 2 ──
     elif st.session_state.step == 2:
@@ -250,10 +259,13 @@ if st.session_state.plan is None:
                 st.session_state.step = 1
                 st.rerun()
         with col2:
-            if st.button("Devam Et →", disabled=(len(subjects) == 0)):
-                st.session_state.subjects = subjects
-                st.session_state.step = 3
-                st.rerun()
+            if st.button("Devam Et →"):
+                if len(subjects) == 0:
+                    st.error("Lütfen devam etmek için en az bir ders seçin.")
+                else:
+                    st.session_state.subjects = subjects
+                    st.session_state.step = 3
+                    st.rerun()
  
     # ── STEP 3 ──
     elif st.session_state.step == 3:
